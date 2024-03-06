@@ -1,0 +1,20 @@
+.color-name{
+    font-weight: normal;
+}
+
+.colors-img{
+    height: 200px;
+    width: 200px;
+}
+
+#red-text{
+    color: red;
+}
+
+#blue-text{
+    color: blue;
+}
+
+#orange-text{
+    color: orange;
+}
