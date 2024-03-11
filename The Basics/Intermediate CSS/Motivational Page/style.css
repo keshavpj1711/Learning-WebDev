@@ -1,0 +1,44 @@
+body{
+    background-color: black;
+    opacity: 0.8;
+    font-family: sans-serif;
+}
+
+.container{
+    height: 100%;
+    align-items: center;
+}
+
+.img-container{
+    text-align: center;
+    padding: 50px;
+    padding-bottom: 10px;
+    object-fit: cover;
+}
+
+.motivational-image{
+    max-width: 70%;
+    height: 80%;
+    border: 10px;
+    border-style: solid;
+    border-color: rgb(149, 195, 232);
+}
+
+.text-container{
+    text-align: center;
+}
+
+#heading{
+    color: rgb(149, 195, 232);
+    font-weight: bold;
+    font-size: 2.5rem;
+    padding: 10px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+}
+
+#quote{
+    color: white;
+    margin-top: 0px;
+    font-size: 1.5rem;
+}
