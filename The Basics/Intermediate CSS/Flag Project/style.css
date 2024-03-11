@@ -1,0 +1,36 @@
+.flag{
+    background-color: red;
+    height: 300px;
+    width: 400px;
+    border: 5px;
+    border-style: solid;
+}
+
+.flag div{
+    background-color: blue;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flag p{
+    text-align: center;
+    font-size: 35px;
+    color: white;
+    margin: 0;
+    height: 75px;
+}
+
+.flag div div{
+    background-color: white;
+    border-radius: 100px;
+    width: 100px;
+    height: 100px;
+}
+
+.flag div div p{
+    color: black;
+    display: flex;
+    align-items: center;
+}
