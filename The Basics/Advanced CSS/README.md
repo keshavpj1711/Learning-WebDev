@@ -40,6 +40,8 @@ Both inline and block have there set of issues but those can be solved by `displ
 There are 4 major ways to do it:
 
 - Media Queries
+    - Tells what to execute at breakpoint
+    - e.g. `@media (max-width: 600px){Your css code goes here}` 
 - CSS Grid
 - CSS Flexbox
 - External Frameworkds eg: Bootstrap
