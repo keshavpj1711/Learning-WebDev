@@ -1,0 +1,90 @@
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#logo-img {
+    width: 200px;
+    margin: 0px 0px;
+    padding: 25px 20px;
+    float: none;
+}
+
+h1 {
+    font-size: 70px;
+    margin: 10px 0px;
+}
+
+#heading {
+    padding: 20px;
+}
+
+.heading {
+    margin: 0px 0px;
+}
+
+#creative {
+    color: darkblue;
+}
+
+.image {
+    width: 250px;
+    max-height: 240.3;
+    margin: 10px;
+    padding: 10px;
+    border: solid 1px;
+    border-radius: 50px;
+}
+
+#content-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+#beauty {
+    display: flex;
+    align-items: center;
+}
+
+#construction {
+    display: flex;
+    align-items: center;
+}
+
+.text-container {
+    max-width: 400px;
+    padding: 10px 20px;
+}
+
+@media (max-width: 1100px){
+    #logo{
+        text-align: center;
+    }
+
+    #heading {
+        text-align: center;
+    }
+
+    #content-container {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .image {
+        max-width: 300px;
+    }
+
+    #beauty {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #construction {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .content {
+        max-width: 300px;
+    }
+}
