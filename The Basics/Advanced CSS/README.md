@@ -1,5 +1,5 @@
 # CSS Display
-When using the display property in CSS we mainly use 3 properties:
+When using the display property in CSS we sometime use these 3 properties:
 
 - inline
 - block 
