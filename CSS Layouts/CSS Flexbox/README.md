@@ -49,3 +49,23 @@ Properties responsible for the layout are:
 - align-self: (on particular child)
     - same as above
 
+## Flex Sizing
+
+Following the order from right to left:
+![order how flexbox sees](./images/image_3.png)
+
+### flex-grow and shrink
+
+Allows to set if we allow our content to grow or shrink.
+Example:
+
+```css
+flex-basis: 0;
+flex-grow: 1;
+flex-shrink: 1;
+
+/* To write this in short hand notation we can do  */
+flex: 1 1 0;
+/* Furthermore it can be shortened to */
+flex: 1;
+```
