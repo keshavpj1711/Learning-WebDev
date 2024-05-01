@@ -36,3 +36,27 @@ As we have already seen how to template the grid columns and rows a **short nota
 What this does is if we have something where new divs will be created and added to the grid then for those extra divs we can have fixed height using `grid-auto-rows`.
 
 For columns the new div automatically takes the column width of the above divs.
+
+## Grid Placement
+
+One way to set how much rows or column an element covers is span by:
+
+```css
+grid-column: span 2;
+grid-row: span 3;
+```
+
+Other one is to use the property start and end, 
+
+- `grid-column-start: 1;`
+- `grid-column-end: 3;`
+
+What this will do is start the particular element from 1st column and extend till 3, basically make the element cover 2 columns(or give it a span of 2).
+
+> Also remember with order it's always relative to other elements.
+
+### Short notation i.e. `grid-area`
+
+![for setting coordinates of an element](./images/image5.png)
+
+> If you are using grid-area for one element you should also use grid-area for other elements as well to avoid any unecessary issues.
