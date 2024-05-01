@@ -1,8 +1,14 @@
+.flex-container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .grid-container{
     display: grid;
-    grid-template-columns: 320px 198px 153px 50px;
-    grid-template-rows: 414px 130px 155px 20px;
-    gap: 9px;
+    grid-template-columns: 320px 9px 198px 9px 153px 9px 50px;
+    grid-template-rows: 414px 9px 130px 9px 155px 9px 20px;
     background-color: rgb(218, 215, 211);
     width: 748px;
     height: 748px;
@@ -12,24 +18,81 @@
     background-color: rgb(222, 0, 0);
 }
 
-.box1{
+.gap1{
+    background-color: black;
     grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: -1;
+}
+
+.box1{
+    grid-column-start: 3;
     grid-column-end: -1;
 }
 
-.box2{
+.gap2{
+    background-color: black;
+    grid-column-start: 1;
+    grid-column-end: -1;
     grid-row-start: 2;
-    grid-row-end: 4;
+    grid-row-end: 3;
+}
+
+.box2{
+    grid-row-start: 3;
+    grid-row-end: 6;
 }
 
 .box3{
-    grid-row-start: 2;
-    grid-row-end: 4;
-    grid-column-start: 2;
-    grid-column-end: 4;
+    grid-row-start: 3;
+    grid-row-end: 6;
+    grid-column-start: 3;
+    grid-column-end: 6;
+}
+
+.gap4{
+    background-color: black;
+    grid-row-start: 3;
+    grid-row-end: -1;
+    grid-column-start: 6;
+    grid-column-end: 7;
 }
 
 .blue{
-    background-color: rgb(0, 0, 176);
-    border-bottom: 10px solid black ;
+    background-color: rgb(4, 4, 182);
+    border-bottom: 10px solid black;
+    grid-area: 3 / 7 / 4 / -1;
+}
+
+.gap5{
+    background-color: black;
+}
+
+.box4{
+    grid-row-start: 5;
+    grid-row-end: -1;
+}
+
+.gap6{
+    background-color: black;
+    grid-area: 6 / 1 / 7 / 7;
+}
+
+.box5{
+
+}
+
+.yellow{
+    background-color: rgb(255, 217, 0);
+}
+
+.gap7{
+    background-color: black;
+    grid-column-start: 4;
+    grid-column-end: 5;
+}
+
+.black{
+    background-color: black;
 }
