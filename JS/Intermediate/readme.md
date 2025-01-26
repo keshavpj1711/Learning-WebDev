@@ -30,6 +30,7 @@ The DOM provides a structured, hierarchical representation of the document as a 
 ### Accessing Elements
 
 - `document.getElementById(id)`: Returns element with the specified id.
+  - When using this keep in mind that your are calling this on the document and not on any child element.
 - `document.getElementsByClassName(className)`: Returns all elements with the specified class.
 - `document.getElementsByTagName(tagName)`: Returns all elements with the specified tag name.
 - `document.querySelector(selector)`: Returns the first element matching the CSS selector.
