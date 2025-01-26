@@ -46,24 +46,40 @@ The DOM provides a structured, hierarchical representation of the document as a 
   - `element.getAttribute('href');`
 - **CSS Styles:** Modify inline styles.
   - `element.style.backgroundColor = 'red';`
+  - For other properties check: [link](https://www.w3schools.com/jsref/dom_obj_style.asp)
+
+### Add/Remove classes to an element
+
+- **Adding Class**
+  ```js
+  const btnClassList = document.querySelector("button").classList;
+  btnClassList.add("invisible");
+  ```
+- **Remove Class**
+  ```js
+  const btnClassList = document.querySelector("button").classList;
+  btnClassList.remove("invisible");
+  ```
+- **Another useful method is Toggle**\
+  What `.toggle("invisible")` does is it add the class if it's not present and removes if present.
 
 ### Adding/Removing Elements
 
 - **Create an element**
-  ```html
+  ```js
   const newDiv = document.createElement('div');
   newDiv.textContent = 'This is a new div!';
   document.body.appendChild(newDiv); // Adds to the end of the body
   ```
 
 - **Remove an element**
-  ```html
+  ```js
   const oldDiv = document.querySelector('#oldDiv');
   oldDiv.remove(); // Removes the element from the DOM
   ```
 
 - **Insert a new element before another**
-  ```html
+  ```js
   const referenceNode = document.querySelector('#existingElement');
   document.body.insertBefore(newDiv, referenceNode); // Inserts newDiv before existingElement
   ```
@@ -73,7 +89,7 @@ The DOM provides a structured, hierarchical representation of the document as a 
 Listening for events like click, form submissions, etc., and respond accordingly 
 
 - **Add Event Listner**
-  ```
+  ```js
   const button = document.querySelector('button');
   button.addEventListener('click', function() {
     alert('Button clicked!');
@@ -81,7 +97,7 @@ Listening for events like click, form submissions, etc., and respond accordingly
   ```
 
 - **Remove Event Listner**
-  ```
+  ```js
   const handler = function() {
     alert('Button clicked!');
   };
@@ -94,19 +110,19 @@ Listening for events like click, form submissions, etc., and respond accordingly
 You can also navigate through DOM
 
 - **Parent Element:**
-  ```
+  ```js
   const childElement = document.querySelector('.child');
   const parentElement = childElement.parentElement;
   ```
 
 - **Child Element:**
-  ```
+  ```js
   const parentElement = document.querySelector('.parent');
   const children = parentElement.children;
   ```
 
 - **Next/Prev Sibling:**
-  ```
+  ```js
   const currentElement = document.querySelector('.current');
   const nextSibling = currentElement.nextElementSibling;
   const previousSibling = currentElement.previousElementSibling;
