@@ -56,5 +56,21 @@ function handleClick(){
 document.addEventListener("keydown",function(event){
   var keyPressed = event.key;
   // console.log(keyPressed);
+
+  // calling the buttonAnimation 
+  buttonAnimation(keyPressed);
+
   PlaySound(keyPressed)
 })
+
+function buttonAnimation(buttonInnerHTML) {
+  var buttonPressed = document.querySelector("."+buttonInnerHTML);
+
+  buttonPressed.classList.add("pressed");
+  
+  // introducing some delay
+  setTimeout(function() {
+    buttonPressed.classList.remove("pressed");
+  }, 200);
+  
+}
