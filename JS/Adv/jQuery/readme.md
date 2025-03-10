@@ -21,6 +21,9 @@ Or download and include it locally:
 <script src="jquery.min.js"></script>
 ```
 
+> Including it through CDN is a better way to include jQuery in your code 
+> And keep in mind that the script tag is placed above the linking of the **index.js** as the code is read from top to bottom
+
 ## jQuery Syntax
 Basic jQuery syntax:
 ```javascript
