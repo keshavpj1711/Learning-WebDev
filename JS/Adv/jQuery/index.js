@@ -32,8 +32,16 @@ $("#changeColor").click(function () {
 // Showing what key we have pressed
 
 $("body").keypress(function (event) { 
-  $("h3").text(event.key);
+  $("#input").text(event.key);
   setTimeout(() => {
-    $("h3").text("Anything you Press will show here");
+    $("#input").text("Anything you Press will show here");
   }, 3000);
+});
+
+// Hide/Show Title
+$("#show").click(function () { 
+  $("#title").fadeIn();  
+});
+$("#hide").click(function () { 
+  $("#title").fadeOut();  
 });

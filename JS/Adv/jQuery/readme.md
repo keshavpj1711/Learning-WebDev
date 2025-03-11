@@ -82,6 +82,10 @@ $("#id").slideDown();
 $("#id").slideUp();
 ```
 
+For custom animations we can use 
+`$(selector).animate()`
+but this is still quite limited.
+
 ## Manipulating the DOM
 ### Changing HTML Content
 ```javascript
