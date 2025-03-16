@@ -19,6 +19,14 @@ let numKey = {
 
 // console.log(colorKey[1])
 
+$("body").keypress(function () {
+  console.log("KeyPress")
+  if ($("#level-title").text() === "Press A Key to Start" || $("#level-title").text() === "Game Over, Press A Key to Start") {
+    startGame();
+    $("#level-title").text("Level " + genSeq.length);
+  }
+});
+
 function startGame() {
   if (genSeq.length === 0) {
     console.log("Game Started")
@@ -53,6 +61,7 @@ function playSoundSeq() {
   }
 }
 
+// To play sound when a button is clicked
 function playSoundClick(event) {
   sound = event;
   let audio = new Audio("./sounds/" + sound + ".mp3");
@@ -65,6 +74,7 @@ function playSoundClick(event) {
   }, 100);
 }
 
+// Adding a random number to genSeq and playing sound in sequence after every addition
 function genSequence() {
   let randomNumber = parseInt(Math.random() * 4);
   genSeq.push(randomNumber);
@@ -91,6 +101,7 @@ function gameLogic(clickedBtn) {
   console.log("UserSeq: " + userSeq);
   console.log("--------");
 
+  // Main logic responsible 
   if (genSeq.length !== userSeq.length) {
     if (genSeq[userSeq.length - 1] !== userSeq[userSeq.length - 1]) {
       gameOver();
@@ -110,12 +121,3 @@ function gameLogic(clickedBtn) {
     }
   }
 }
-
-
-$("body").keypress(function () {
-  console.log("KeyPress")
-  if ($("#level-title").text() === "Press A Key to Start" || $("#level-title").text() === "Game Over, Press A Key to Start") {
-    startGame();
-    $("#level-title").text("Level " + genSeq.length);
-  }
-});
