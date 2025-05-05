@@ -1,0 +1,15 @@
+{
+  "name": "firstserver",
+  "version": "1.0.0",
+  "description": "Creating our first server using express",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "nightfury",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
