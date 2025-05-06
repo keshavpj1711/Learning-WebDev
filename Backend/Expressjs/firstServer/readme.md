@@ -12,3 +12,7 @@ So when we listen through that port or we say this port is open, we basically me
 # HTTP Requests
 
 ![alt text](image.png)
+
+# HTTP Status Codes
+
+![alt text](image-1.png)
