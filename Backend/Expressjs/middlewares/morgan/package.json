@@ -1,0 +1,12 @@
+{
+  "name": "morgan",
+  "version": "1.0.0",
+  "description": "Learning about morgan to log request that come into your server",
+  "license": "ISC",
+  "author": "nightfury",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
