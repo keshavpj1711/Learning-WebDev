@@ -1,5 +1,7 @@
 # Middlewares
 
+We use middlewares by passing it as an arguements to app.use();
+
 ## What can middlewares do?
 
 They can pre-process the HTTP requests.
