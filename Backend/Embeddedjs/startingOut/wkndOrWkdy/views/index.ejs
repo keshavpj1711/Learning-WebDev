@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weekend/Weekday</title>
+</head>
+<body>
+  <% 
+  const date = new Date();
+  let displayText = "";
+  if (date.getDay() === 0 || date.getDay() === 6) {
+    console.log("Date: ", date, " Day: ", date.getDay())
+    displayText = "Hey! it's the weekend, time to have some fun!";
+  } else {
+    displayText = "Hey! it's time to work hard!";
+  } 
+  %> 
+  <h1>
+    <%= displayText%>
+  </h1>
+</body>
+</html>

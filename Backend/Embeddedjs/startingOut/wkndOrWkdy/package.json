@@ -1,0 +1,17 @@
+{
+  "name": "wkndorwkdy",
+  "version": "1.0.0",
+  "description": "Simple app to get started with express js",
+  "license": "ISC",
+  "author": "nightfury",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "morgan": "^1.10.0"
+  }
+}
