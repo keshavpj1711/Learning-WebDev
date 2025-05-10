@@ -1,0 +1,17 @@
+{
+  "name": "implementingpwds",
+  "version": "1.0.0",
+  "description": "This is to showcase how we protect routes and implement a basic passwd protection",
+  "license": "ISC",
+  "author": "nightfury",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "express": "^5.1.0",
+    "morgan": "^1.10.0"
+  }
+}
