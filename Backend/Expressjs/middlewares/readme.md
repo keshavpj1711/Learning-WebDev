@@ -22,3 +22,22 @@ Instead of **"dev"** we can use other parameters like **"short"**, **"tiny"**, w
 
 ## Custom middlewares
 
+Here's a piece of code which helps us understand the implementation of custom middlewares.
+
+```javascript
+// This is bascially how the basic structure of a custom middleware looks like 
+// app.use((req, res, next) => {
+//     console.log("Request method: ", req.method);
+//     next(); 
+//     // This next determines when we move from the middlewares to the server handlers
+// }); 
+
+// Creating a custom logger middleware
+function logger(req, res, next) {
+	console.log("Method:", req.method + "|" + "Path Accessed:", req.url);
+	next();
+}
+
+// Using the custion middleware normally
+app.use(logger)
+```
