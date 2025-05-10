@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CodeEx</title>
+</head>
+<body>
+  <%# console.log(title) %> 
+  <!-- basically we can directly use the keys of the 
+   dict or say json passed to the ejs file -->
+
+  <h1><%= title %></h1>
+  <p>Current second: <%= seconds %> </p>
+  <% if (seconds%2===0) { %>
+   <% for( let i = 0; i < items.length; i++ ) { %>
+    <ul>
+      <li><%= items[i] %></li>
+    </ul>
+   <% } %>
+  <% } else { %>
+    <p>No items to display</p>
+  <% } %>
+  <%- htmlContent %>
+  <%- include("./footer.ejs") %> 
+</body>
+</html>
