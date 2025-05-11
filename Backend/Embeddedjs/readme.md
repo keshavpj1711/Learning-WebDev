@@ -24,7 +24,11 @@ For example:
 
 - `<%% %%>`: this basically(like escape character for showing `<%` or `%>`) used in scenarios let say you are creating a EJS tutorial website and you want to show `<%` or `%>` seperately
 
-## Some Examples 
+## Passing Data to EJS Templates
 
 Using HTML with EJS:
 ![alt text](./images/image-3.png)
+See how the data is passed passed in the json format and the keys are directly available to us in the .ejs file
+
+Using info provided by the user in .ejs file
+![alt text](./images/image-5.png)
