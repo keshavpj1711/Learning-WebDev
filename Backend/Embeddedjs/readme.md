@@ -32,3 +32,9 @@ See how the data is passed passed in the json format and the keys are directly a
 
 Using info provided by the user in .ejs file
 ![alt text](./images/image-5.png)
+
+
+## EJS Partials
+
+![alt text](./images/image-6.png)
+Pages can be quite lengthy and therefore in order to 
