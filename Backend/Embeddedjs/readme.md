@@ -37,4 +37,13 @@ Using info provided by the user in .ejs file
 ## EJS Partials
 
 ![alt text](./images/image-6.png)
-Pages can be quite lengthy and therefore in order to 
+Pages can be quite lengthy and therefore in order to break it into components we can include partials.
+
+```js
+<%- include("partials/footer.ejs") %>
+```
+Now if you also have to render static files like style.css etc we also need to have 
+```js
+app.use(express.static("public"));
+```
+And this need to be added to our index.js
