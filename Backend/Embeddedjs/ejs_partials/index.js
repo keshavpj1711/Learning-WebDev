@@ -22,6 +22,16 @@ app.get("/", (req, res) => {
   res.render(__dirname + "/views/index.ejs")
 })
 
+// Step 3
+app.get("/about", (req, res) => {
+  res.render(__dirname + "/views/about.ejs")
+})
+
+// Step 1
+app.get("/contact", (req, res) => {
+  res.render(__dirname + "/views/contact.ejs")
+})
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
