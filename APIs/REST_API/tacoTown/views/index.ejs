@@ -15,18 +15,31 @@
     <button type="submit" value="fish" name="choice">🐟</button>
   </form>
   <div id="recipeContainer" class="hidden">
-
     <!-- If no recipe yet, show: -->
-    <h2>Pick your favourite taco ingredient 👆</h2>
-    <!-- Else, show the recipe name e.g. <h2>Recipe name</h2>-->
-
-    <h3>Ingredients:</h3>
-    <ul id="ingredientsList">
-      <li>Protein name, protein preparation</li>
-      <li>Salsa name</li>
-      <li>Every other topping</li>
-    </ul>
-
+    <% if (reqRecipe.name) { %>
+      <h2>
+        <%= reqRecipe.name %>
+      </h2>
+      <h3>Ingredients:</h3>
+      <ul id="ingredientsList">
+        <li><%= reqRecipe.ingredients.protein.name %>, <%= reqRecipe.ingredients.protein.preparation %></li>
+        <li><%= reqRecipe.ingredients.salsa.name %></li>
+        <% for( let i = 0; i < reqRecipe.ingredients.toppings.length; i++ ) { %>
+          <li>
+            <%= reqRecipe.ingredients.toppings[i].quantity %> of <%= reqRecipe.ingredients.toppings[i].name %>
+          </li>
+        <% } %>
+      </ul>
+    <% } else {%>
+      <!-- Else, show the recipe name e.g. <h2>Recipe name</h2>-->
+      <h2>Pick your favourite taco ingredient 👆</h2>
+      <h3>Ingredients:</h3>
+      <ul id="ingredientsList">
+        <li>Protein name, protein preparation</li>
+        <li>Salsa name</li>
+        <li>Every other topping</li>
+      </ul>
+    <% } %>
 
 
   </div>
