@@ -62,3 +62,22 @@ Since it's simpler to use for example in order to get data from api endpoint
   Doing the same with axios has the following benefits
   - Simpler Syntax
   - Does the error handling for you throwing the HTTP codes.
+
+
+## API authentication
+
+Mainly there are 4 type:
+
+- No Authentication
+
+- Basic Authentication 
+  - Passing your username and password with with requests
+
+- API_KEY Authorisation(client who is allowed to use the service 
+  whereas authentication is you are considered as user and you log in to something)
+  - This is among the common ones that you would come across
+  - you might pass it through query parameters or header, so read docs for that particular api.
+
+- Token Based Authentication
+  - For example when you authorize a particular account to use your google account.
+  > Read more about these since they are much secure way of authentication and you can use it in some great projects 
