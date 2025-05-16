@@ -17,3 +17,48 @@ const data = JSON.parse(jsonData);
 ```
 
 ## Sending and Requesting Data
+
+We send and recieve data over the internet and this is usually done over HTTP protocol.
+Therefore in order to communicate to a public endpoint we need to use **http** lib can comes with Node.js
+
+## Axios
+
+This is an js lib which makes the process of making these HTTP requests simplar.
+Basically in here it's used to communicate with APIs.
+
+### Why is it used over conventional HTTP requests?
+
+Since it's simpler to use for example in order to get data from api endpoint 
+
+- **Using just the http lib**
+  Fetching some details
+  ```js
+  fetch('https://jsonplaceholder.typicode.com/users')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok'); // Manual error check
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Users:', data);
+    })
+    .catch(error => {
+      console.error('Fetch error:', error);
+    });
+
+  ```
+
+- **Using Axios**
+  ```js
+  axios.get('https://jsonplaceholder.typicode.com/users')
+    .then(response => {
+      console.log('Users:', response.data);  // Directly using the response
+    })
+    .catch(error => {
+      console.error('Axios error:', error);
+    });
+  ```
+  Doing the same with axios has the following benefits
+  - Simpler Syntax
+  - Does the error handling for you throwing the HTTP codes.
