@@ -15,3 +15,5 @@ const jsonData = JSON.stringify(data);
 ```js
 const data = JSON.parse(jsonData);
 ```
+
+## Sending and Requesting Data
