@@ -17,6 +17,7 @@ app.get("/random", (req, res) => {
     console.log("Error: ", error)
   }
 })
+
 //2. GET a specific joke
 app.get("/joke/:id", (req, res) => {
   try {
