@@ -64,6 +64,57 @@ Since it's simpler to use for example in order to get data from api endpoint
   - Does the error handling for you throwing the HTTP codes.
 
 
+## Using Axios
+
+### Performing with GET Request
+
+```javascript
+// Make a request for a user with a given ID
+axios.get('/user?ID=12345')
+  .then(function (response) {
+    // handle success
+    console.log(response);
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+  .finally(function () {
+    // always executed
+  });
+```
+
+### Using with async/await
+
+```javascript
+// Want to use async/await? Add the `async` keyword to your outer function/method.
+async function getUser() {
+  try {
+    const response = await axios.get('/user?ID=12345');
+    console.log(response);
+  } catch (error) {
+    console.error(error);
+  }
+}
+```
+
+### For all other HTTP Requests
+
+```js
+// Get
+axios.get(url[, config]);
+// Delete
+axios.delete(url[, config]);
+// Patch
+axios.patch(url[, data,[ config]]);
+// Put
+axios.put(url[, data[, config]]);
+// Post
+axios.post(url[, data[, config]]);
+
+// Square brackets show that these parameters are optional
+```
+
 ## API authentication
 
 Mainly there are 4 type:
@@ -81,3 +132,4 @@ Mainly there are 4 type:
 - Token Based Authentication
   - For example when you authorize a particular account to use your google account.
   > Read more about these since they are much secure way of authentication and you can use it in some great projects 
+
