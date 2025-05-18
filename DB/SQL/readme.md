@@ -134,3 +134,73 @@ DELETE FROM table_name WHERE condition;
 > Be careful when deleting records in a table! Notice the `WHERE` clause in the `DELETE` statement. The `WHERE` clause specifies which record(s) should be deleted. If you omit the `WHERE` clause, all records in the table will be deleted!
 
 
+# Relationships in SQL Databases
+
+## Primary Key
+
+The PRIMARY KEY constraint uniquely identifies each record in a table.
+
+Primary keys must contain UNIQUE values, and cannot contain NULL values.
+
+### MySQL:
+
+```sql
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    PRIMARY KEY (ID)
+); 
+```
+
+### SQL Server / Oracle / MS Access
+
+```sql
+CREATE TABLE Persons (
+    ID int NOT NULL PRIMARY KEY,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int
+); 
+```
+
+A table can have only ONE primary key; and in the table, this primary key can consist of single or multiple columns (fields).
+
+To see the above point much clearly refer to the example below
+
+```sql
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    CONSTRAINT PK_Person PRIMARY KEY (ID,LastName)
+); 
+```
+
+>In the example above there is only **ONE PRIMARY KEY (PK_Person)**. However, the **VALUE of the primary key is made up of TWO COLUMNS** (ID + LastName).
+
+## Foriegn Key
+
+A FOREIGN KEY is a field (or collection of fields) in one table, that refers to the PRIMARY KEY in another table.
+
+The table with the foreign key is called the child table, and the table with the primary key is called the referenced or parent table.
+
+## INNER JOIN
+
+The INNER JOIN command returns rows that have matching values in both tables.
+
+Example: 
+
+```sql 
+SELECT Orders.OrderID, Customers.CustomerName 
+--These are the column s we would like in our joined table that would be visible
+FROM Orders
+INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID; 
+```
+
+>The INNER JOIN keyword selects all rows from both tables as long as there is a match between the columns. 
+>
+>If there are records in the "Orders" table that do not have matches in "Customers", these orders will not be shown!
+
