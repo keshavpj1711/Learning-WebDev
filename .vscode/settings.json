@@ -1,2 +1,9 @@
 {
+  "markdown-preview-enhanced.codeBlockTheme": "github.css",
+  "markdown-preview-enhanced.alwaysShowBacklinksInPreview": true,
+  "files.autoSave": "afterDelay",
+  "markdown.preview.fontFamily": "'JetBrainsMono Nerd Font'",
+  "markdown.preview.openMarkdownLinks": "inPreview",
+  "markdown.preview.linkify": true,
+  "workbench.editor.defaultBinaryEditor": "default"
 }
