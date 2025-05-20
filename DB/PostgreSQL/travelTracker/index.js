@@ -8,8 +8,6 @@ dotenv.config()
 const app = express();
 const port = 3000;
 
-let visitedCountries = [];
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
@@ -28,33 +26,59 @@ try {
   console.error('Connection error', err.stack);
 }
 
-// Your queries go here
+// // Your queries go here
+async function getVisitedCountries() {
+  const result = await db.query("SELECT country_code FROM visited_countries");
 
-// Query for getting the country codes and passing visited Countries as a list
-db.query("SELECT country_code FROM visited_countries", (err, res) => {
-  if(err){
-    console.log("Error in fetching query results: ", err.stack)
-  } else {
-    const visitedCountryData = res.rows
-    // console.log("Data fetched from db: ",visitedCountryData)
-    for (let i = 0; i < visitedCountryData.length; i++) {
-      visitedCountries.push(visitedCountryData[i].country_code);
-    }
-    console.log("Visited countries list: ", visitedCountries)
+  let countries = [];
+  result.rows.forEach((country) => {
+    countries.push(country.country_code);
+  });
+  return countries;
+}
+
+async function getCountryCode(countryName) {
+  const result = await db.query("SELECT country_code FROM countries WHERE country_name = $1", [countryName]);
+
+  let countryCode = result.rows[0].country_code;
+  console.log(countryCode);
+  return countryCode;
+}
+
+async function insertVisitedCountry(countryCode) {
+  try {
+    const result = db.query("INSERT INTO visited_countries (country_code) VALUES ($1)",
+      [countryCode]
+    )
+    console.log("Country Added successfully");
+  } catch (error) {
+    console.log("Error inserting record: ", error);
   }
-  db.end()
-})
+}
 
 
 app.get("/", async (req, res) => {
-  //Write your code here.
+  const visitedCountries = await getVisitedCountries();
+
+  // console.log("Visited countries list: ", visitedCountries)
+
   res.render("index.ejs", {
     total: visitedCountries.length,
     countries: visitedCountries
   })
 });
 
+app.post("/add", async (req, res) => {
+  // fetch the country code for the entered country
+  const countryCode = await getCountryCode(req.body.country)
+  console.log("CountryCode: ", countryCode)
 
+  // insert the country code
+  insertVisitedCountry(countryCode);
+
+  // rendering index.ejs again
+  res.redirect("/");
+})
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
