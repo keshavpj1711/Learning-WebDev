@@ -70,11 +70,14 @@ app.get("/", async (req, res) => {
 
 app.post("/add", async (req, res) => {
   // fetch the country code for the entered country
-  const countryCode = await getCountryCode(req.body.country)
-  console.log("CountryCode: ", countryCode)
-
-  // insert the country code
-  insertVisitedCountry(countryCode);
+  try {
+    const countryCode = await getCountryCode(req.body.country);
+    console.log("CountryCode: ", countryCode);
+    // insert the country code
+    insertVisitedCountry(countryCode);
+  } catch (error) {
+    console.log("Error fetching country code, Please check the spelling of the inserted country")
+  }
 
   // rendering index.ejs again
   res.redirect("/");
