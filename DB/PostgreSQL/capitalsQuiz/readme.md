@@ -34,3 +34,16 @@ pgadmin since it was running in docker container rather than local machine
 
 # Connecting our App to Database
 
+```js
+import pg from "pg";
+
+const db = new pg.Client({
+	user: 'username',
+  host: 'localhost',
+  database: 'postgres',
+  password: 'yourpassword',
+  port: 5432,
+});
+
+// After this you can make db queries
+```
