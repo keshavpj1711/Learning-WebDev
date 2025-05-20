@@ -8,6 +8,8 @@ dotenv.config()
 const app = express();
 const port = 3000;
 
+let visitedCountries = [];
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
@@ -40,25 +42,28 @@ async function getVisitedCountries() {
 async function getCountryCode(countryName) {
   const result = await db.query("SELECT country_code FROM countries WHERE country_name = $1", [countryName]);
 
-  let countryCode = result.rows[0].country_code;
-  console.log(countryCode);
-  return countryCode;
+  if (result.rows.length === 0) {
+    throw new Error("Country not found");  // Throw an error instead of returning a string
+    // this error can be caught by the try and catch block
+  }
+  
+  return result.rows[0].country_code;
 }
 
 async function insertVisitedCountry(countryCode) {
   try {
-    const result = db.query("INSERT INTO visited_countries (country_code) VALUES ($1)",
-      [countryCode]
-    )
+    await db.query("INSERT INTO visited_countries (country_code) VALUES ($1)", [countryCode]);
     console.log("Country Added successfully");
+    return true;  // Return true on success
   } catch (error) {
     console.log("Error inserting record: ", error);
+    throw error;  // Re-throw the error to be caught by the caller
   }
 }
 
 
 app.get("/", async (req, res) => {
-  const visitedCountries = await getVisitedCountries();
+  visitedCountries = await getVisitedCountries();
 
   // console.log("Visited countries list: ", visitedCountries)
 
@@ -69,19 +74,55 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/add", async (req, res) => {
-  // fetch the country code for the entered country
   try {
-    const countryCode = await getCountryCode(req.body.country);
-    console.log("CountryCode: ", countryCode);
-    // insert the country code
-    insertVisitedCountry(countryCode);
+    // First, update visitedCountries to have the latest data
+    visitedCountries = await getVisitedCountries();
+    
+    // Get the country name from the form
+    const countryName = req.body.country;
+    
+    // Try to get the country code
+    const countryCode = await getCountryCode(countryName);
+    
+    // Check if country is already visited
+    if (visitedCountries.includes(countryCode)) {
+      return res.render("index.ejs", {
+        total: visitedCountries.length,
+        countries: visitedCountries,
+        error: "Country already visited"
+      });
+    }
+    
+    // Add the country to visited list
+    await insertVisitedCountry(countryCode);
+    
+    // Refresh the visited countries list
+    visitedCountries = await getVisitedCountries();
+    
+    // Redirect to home page to see updated map
+    return res.redirect("/");
+    
   } catch (error) {
-    console.log("Error fetching country code, Please check the spelling of the inserted country")
+    console.log("Error:", error.message);
+    
+    // Determine the type of error
+    let errorMessage = "An unexpected error occurred";
+    
+    if (error.message === "Country not found") {
+      errorMessage = "Enter a valid country";
+    } else if (error.message.includes("duplicate key") || error.message.includes("unique constraint")) {
+      errorMessage = "Country already visited";
+    }
+    
+    // Render the page with the error
+    return res.render("index.ejs", {
+      total: visitedCountries.length,
+      countries: visitedCountries,
+      error: errorMessage
+    });
   }
+});
 
-  // rendering index.ejs again
-  res.redirect("/");
-})
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);

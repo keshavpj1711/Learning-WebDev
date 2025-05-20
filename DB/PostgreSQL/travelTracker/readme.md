@@ -13,7 +13,7 @@ in our program execution here's an example from our tracker which keeps this in 
 //  A function which inserts the visited country to out visited_country table
 async function insertVisitedCountry(countryCode) {
   try {
-    const result = db.query("INSERT INTO visited_countries (country_code) VALUES ($1)",
+    const result = await db.query("INSERT INTO visited_countries (country_code) VALUES ($1)",
       [countryCode]
     )
     console.log("Country Added successfully");
