@@ -46,6 +46,25 @@ app.post("/add", async (req, res) => {
   res.redirect("/");
 })
 ```
+
+## Handling of error management 
+
+When you are calling some function inside the trycatch block and due to some reason 
+the function encounters an error like in the case of say inserting records.
+
+```js
+async function insertVisitedCountry(countryCode) {
+  try {
+    await db.query("INSERT INTO visited_countries (country_code) VALUES ($1)", [countryCode]);
+    console.log("Country Added successfully");
+    return true;  // Return true on success
+  } catch (error) {
+    console.log("Error inserting record: ", error);
+    throw error;  // Re-throw the error to be caught by the caller
+  }
+}
+```
+> The error must be thrown by the function so that it can be caught in the try catch block of the caller.
  
 ## Constraints
 
