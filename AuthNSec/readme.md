@@ -4,13 +4,13 @@ Here we will be getting on with different levels of authentication and we will b
 
 ## Level 1: email-password(without encryption and hashing)
 
-[Level 1]("/lvl1Auth/")
+[Level 1](/AuthNSec/lvl1Auth/)
 
 Email and password are stored in the db in plain text format and checked against plain text in order to login.
 
 ## Level 2: email-password(w/ encryption and hashing)
 
-[Level 2]("/lvl2Auth(EncryptionHashing)/readme.md")
+[Level 2](/AuthNSec/lvl2Auth(EncryptionHashing)/readme.md)
 
 ### Encryption
 
