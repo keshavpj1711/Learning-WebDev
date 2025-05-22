@@ -41,3 +41,34 @@ You directly calculate and say 377.
 Then during login we hash the password entered and compare with the hashes present in the db.
 
 ![alt text](./images/image-4.png)
+
+## Using bcrypt hashing 
+
+When hashing our password using bcrypt module we use something of this sort.
+The callback tells us if there any error or not, and it also return us the hash.
+
+```js
+bcrypt.hash(passwordToHash, saltingRounds, async (err, hash) => {
+  if(err){
+    console.log("Error hashing password");
+  } else {
+    // db query for saving that password 
+  }
+} )
+```
+
+But when someone is logging in and there entered password is to be check or compared, we can't just hash there pwd again through those salting rounds coz each time they'll get different results.
+
+For tackling this we have got another useful method that is compare.
+
+```js
+bcrypt.compare(loginPassword, storedHashedPassword, (err, result) => {
+        if (result) {
+          // If the result is true redirect the user 
+        } else if (err) {
+          console.log("Error comparing passwords")
+        } else {
+          res.send("Incorrect Password");
+        }
+      })
+```
