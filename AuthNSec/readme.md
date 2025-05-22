@@ -20,4 +20,22 @@ The process of converting info or data into code(ciper), in order to prevent una
 
 Hash functions are mathematical functions designed to make it almost impossible to go backwards.
 
-## Level 3: 
+## Level 3: Salting 
+
+![alt text](image.png)
+
+### Salting in practice
+
+![alt text](image-1.png)
+
+> Now even Salting can sometimes not help attacks against the MD5 hashing, but if we use something else like **bcrypt hashing** **(INDUSTRY STANDARD)** which is much slower than MD5 makes the user password much more secure.
+
+On top of this if you plan on to make it more secure you can use the concept of Salt Rounds.
+
+### Salt Rounds
+
+UserPassword + Salt --> (Hashing) --> HashedPassword 
+
+This is considered as Salting once now if you want 2 salt rounds what you can do is:
+
+HashedPassword + Salt --> (Hashing) --> HashedPassword x2
