@@ -38,16 +38,16 @@ let users = [
 
 async function getUsers() {
   const result = await db.query("SELECT * FROM users")
-  if(result.rows.length === 0){
+  if (result.rows.length === 0) {
     throw new error("Create a user") //
   } else {
     users = result.rows;
-    console.log(users)
   }
 }
 
 async function checkVisisted() {
-  const result = await db.query("SELECT country_code FROM visited_countries");
+  const result = await db.query("SELECT country_code FROM visited_countries WHERE user_id = $1", [currentUserId]);
+  countries = [];
   result.rows.forEach((country) => {
     countries.push(country.country_code);
   });
@@ -55,16 +55,22 @@ async function checkVisisted() {
 app.get("/", async (req, res) => {
   await checkVisisted();
   await getUsers();
+
+  console.log("Available Users: ", users)
+  console.log("Current User: ", currentUserId);
+  const userColor = users.find(entry => entry.id === currentUserId).color;
+  console.log("Color Selected: ", userColor);
   res.render("index.ejs", {
     countries: countries,
     total: countries.length,
     users: users,
-    color: "teal",
+    color: userColor,
   });
 });
+
 app.post("/add", async (req, res) => {
   const input = req.body["country"];
-
+  console.log("Entered data: ", input);
   try {
     const result = await db.query(
       "SELECT country_code FROM countries WHERE LOWER(country_name) LIKE '%' || $1 || '%';",
@@ -73,11 +79,13 @@ app.post("/add", async (req, res) => {
 
     const data = result.rows[0];
     const countryCode = data.country_code;
+    console.log("Country code recieved: ", countryCode)
     try {
       await db.query(
-        "INSERT INTO visited_countries (country_code) VALUES ($1)",
-        [countryCode]
+        "INSERT INTO visited_countries (country_code, user_id) VALUES ($1, $2)",
+        [countryCode, currentUserId]
       );
+      console.log("Country added successfully!")
       res.redirect("/");
     } catch (err) {
       console.log(err);
@@ -86,7 +94,15 @@ app.post("/add", async (req, res) => {
     console.log(err);
   }
 });
-app.post("/user", async (req, res) => { });
+app.post("/user", async (req, res) => {
+  // update the currentUser with respect to which user was clicked
+  const userSelected = parseInt(req.body.user);
+  console.log("Changing user to: ", userSelected);
+  currentUserId = userSelected;
+
+  // now redirecting to "/" with updated details
+  res.redirect("/");
+});
 
 app.post("/new", async (req, res) => {
   //Hint: The RETURNING keyword can return the data that was inserted.
