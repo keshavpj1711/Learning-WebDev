@@ -2,20 +2,20 @@
 
 ## Encryption
 
-![alt text](image.png)
+![alt text](./images/image.png)
 
 Different form of encryptions
 - Weakest of them all the **CeaserCipher** method
   - Shifting the letter by fixed amount
 - **aes256 encryption:** The encryption is done using a string in this case the string used for encryption is TOPSECRET.
 Also it's symmetrical in nature.
-  ![alt text](image-1.png)
+  ![alt text](./images/image-1.png)
 
 > Since encryptions be it of any form or type is always vulernable to some level of threat that is when Hashing comes into play.
 
 ## Hashing
 
-![alt text](image-2.png)
+![alt text](./images/image-2.png)
 
 But let's see **how is this works in layman terms?** using an example
 
@@ -36,8 +36,8 @@ You directly calculate and say 377.
 
 ## How we use Hashing in auth?
 
-![alt text](image-3.png)
+![alt text](./images/image-3.png)
 
 Then during login we hash the password entered and compare with the hashes present in the db.
 
-![alt text](image-4.png)
+![alt text](./images/image-4.png)
