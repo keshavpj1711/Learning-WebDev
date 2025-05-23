@@ -73,6 +73,11 @@ app.use(
 ```
 **What each session option means:**
 - `secret`: Used to sign the session ID cookie (should be in environment variables)
+  - This is the secret used to sign the session ID cookie. 
+  - The secret can be any type of value that is supported by Node.js crypto.createHmac (like a string or a Buffer). 
+  - This can be either a single secret, or an array of multiple secrets. If an array of secrets is provided, only the first element will be used to sign the session ID cookie, while all the elements will be considered when verifying the signature in requests. 
+  - The secret itself should be not easily parsed by a human and would best be a random set of characters.
+  
 - `resave`: Forces session to be saved even when unmodified
 - `saveUninitialized`: Forces new sessions to be saved to store
 - `maxAge`: Session expiration time in milliseconds

@@ -54,6 +54,9 @@ app.get("/register", (req, res) => {
 });
 
 app.get("/secrets", (req, res) => {
+  console.log(req.user);  // This will show the user info if it logs in or registers
+
+  // This req.user is a pretty neat way of getting hold of your user's info
 
   // This isAuth() is set to true from the verify function inside the passport.use(new Strategy())
   if (req.isAuthenticated()) {  // This is provided by passport so you can check if the user is logged in or not
@@ -81,11 +84,16 @@ app.post("/register", async (req, res) => {
           console.error("Error hashing password:", err);
         } else {
           console.log("Hashed Password:", hash);
-          await db.query(
-            "INSERT INTO users (email, password) VALUES ($1, $2)",
+          const result = await db.query(
+            "INSERT INTO users (email, password) VALUES ($1, $2) RETURNING *;",
             [email, hash]
           );
-          res.redirect("/secrets");
+
+          const user = result.rows[0];
+          req.login(user, (err) => {
+            console.log(err);
+            res.redirect("/secrets");
+          });  // Comes from passport and used to store user's session
         }
       });
     }
