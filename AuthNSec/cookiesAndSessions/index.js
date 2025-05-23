@@ -7,6 +7,8 @@ import session from "express-session";  // going to allow us to save sessions of
 import passport from "passport";
 import { Strategy } from 'passport-local';
 
+dotenv.config();
+
 const app = express();
 const port = 3000;
 const saltRounds = 10;
@@ -18,7 +20,7 @@ app.use(express.static("public"));
 // This is required for managing our sessions
 app.use(
   session({
-    secret: "SomeSecretShii",  // 
+    secret: process.env.SESSION_SECRET, 
     resave: false,
     saveUninitialized: true,
     cookie: {
@@ -39,7 +41,12 @@ const db = new pg.Client({
   password: process.env.USER_PWD,
   port: 5432,
 });
-db.connect();
+try {
+  db.connect();
+  console.log("Server connected to Postgres")
+} catch (error) {
+  console.log("Error connecting to server: ", error);
+}
 
 app.get("/", (req, res) => {
   res.render("home.ejs");
