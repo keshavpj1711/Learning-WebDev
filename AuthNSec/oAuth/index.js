@@ -57,10 +57,24 @@ app.get("/logout", (req, res) => {
   });
 });
 
-app.get("/secrets", (req, res) => {
+app.get("/secrets", async (req, res) => {
   console.log(req.user);
   if (req.isAuthenticated()) {
-    res.render("secrets.ejs");
+    let displayText = "No secret added submit a secret below to see here"
+    // Getting user's secret if exist else displaying general text 
+    try {
+      const result = await db.query("SELECT secret from users WHERE email=$1", 
+        [req.user.email]
+      );
+      console.log(result.rows)
+      if (result.rows[0].secret !== null) {
+        displayText = result.rows[0].secret;
+      }
+    } catch (error) {
+      console.log("Error fetching secret");
+      displayText = "Error fetching secret"
+    }
+    res.render("secrets.ejs", {displayText: displayText});
   } else {
     res.redirect("/login");
   }
@@ -83,6 +97,28 @@ app.get("/logout", (req, res) => {
     if (err) console.log(err);
     res.redirect("/")
   })
+})
+
+app.get("/submitSecret", (req, res) => {
+  if (req.isAuthenticated()) {
+    res.render("submit.ejs");
+  } else {
+    res.redirect("/login");
+  }
+})
+
+app.post("/submit", async (req, res) => {
+  // Adding secret to postgres db
+  const userSecret = req.body.secret;
+  console.log(userSecret);
+  console.log(req.user)
+  const result = await db.query("UPDATE users SET secret=$1 WHERE email = $2 RETURNING email, secret;", 
+    [userSecret,req.user.email]
+  )
+
+  console.log("Secret added: ", result.rows[0])
+
+  res.redirect("/secrets")
 })
 
 app.post(
