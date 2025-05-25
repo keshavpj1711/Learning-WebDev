@@ -27,6 +27,10 @@ function App() {
             <div className="flex gap-6 justify-center">
 
               <div className={btnClass}>
+                <Link to="/">Home</Link>
+              </div>
+
+              <div className={btnClass}>
                 <Link to="/favFood">FavFood</Link>
               </div>
 

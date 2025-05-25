@@ -20,6 +20,53 @@ createRoot(document.getElementById('root')).render(
 )
 ```
 
+## react-router-dom
+
+- Popular library for handling routing (navigation between pages) in React web apps
+
+- Let's us show component based pages on the URL without reloading the page in react web app.
+
+### Why is it required?
+
+- React itself doesn't have built in routing.
+- Keeps the UI and URL in sync, so users can navigate the app like normal website.
+
+### Imp components
+
+| Component	| What it does |
+|----------|----------|
+| `<BrowserRouter>`	| Wraps your app to enable routing | 
+| `<Routes>`	| Groups all your routes | 
+| `<Route>`	| Defines a path and which component to show | 
+| `<Link>`	| Used for navigation (instead of `<a>`) | 
+| `<Outlet>`	| Where nested routes will render (advanced) | 
+
+### Example of how its implemented
+
+```jsx
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+
+function App() {
+  return (
+    <BrowserRouter>
+      <nav>
+        <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+```
+
+---
+
+
 # JSX and BABEL
 
 ## JSX
