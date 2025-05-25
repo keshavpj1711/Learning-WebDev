@@ -41,3 +41,34 @@ How does it really help to convert JSX to old school JS? See below
 ### See it in action 
 
 ![alt text](image.png)
+
+
+## JS Expressions in JSX
+
+In jsx files we can directly insert JS expressions or variables defined.
+
+For Example: 
+
+```jsx
+function App() {
+  const name = "Keshav";
+
+  return (
+    <>
+      <div className='flex flex-col justify-center items-center h-screen gap-5'>
+        <h1 className='text-6xl'>{name} is learning JSX</h1>
+        <h3 className='text-3xl'>Your random number is: {Math.floor(Math.random()*11)}</h3>
+      </div>
+    </>
+  )
+}
+
+export default App
+```
+
+> One thing to note here is that **only the expressions work** not statements so if you try to insert some if-else block or other pieces of code that'll not work.
+
+### Expressions vs Statements
+
+Video lecture explaining how expressions are different from statements: [Click Here](https://www.youtube.com/watch?v=WVyCrI1cHi8)
+
