@@ -64,6 +64,45 @@ function App() {
 }
 ```
 
+## Routing differences Client v/s Server Side
+
+### Server Side routing(Express.js Routing)
+
+- Handles data, authentication, APIs 
+
+- We write `app.get()` and `app.post()` in our backend/sever files, usually index.js or server.js
+
+- What this basically does is handles HTTP requests from client/browser.
+  - Lets us see this using an example:
+    ```js
+    app.get("/", (req, res) => {
+      res.render("index.ejs");
+    })
+    ```
+    This piece of code tell express to render this to HTML and send it to the browser for a HTTP GET request.
+  - The **browser receives a fully rendered HTML page from the server**.
+
+### Client Side Routing(using react-router-dom)
+
+- Handles what the user sees and page navigation 
+
+- Basically it handles the navigation between the pages or UI components which are already loaded in the browser.
+
+- What it does is, it lowers server loads by handling HTTP Requests for basic UI components directly on the browser side.
+  - Understanding this using a simple example: 
+    ```html
+    <Route path="/" element="{<Home />}" />
+    ```
+    The `<Home />` component is already present in your frontend react code
+  - **No new HTML is sent from the server**, the brower stays on the same page and React updates the visible content.
+  > The browser stays on thesame page means the browser does not reload or fetch a new HTML document from the server.<br>  
+  >Instead, React Router updates the visible content by rendering different React components, all within the already-loaded single-page app
+
+- **Why is it useful?**
+  - Faster navigation, since we don't have to wait for server to render the html page for us
+  - You can do animations and keep app state.
+
+
 ---
 
 
