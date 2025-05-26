@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import FavFood from "./components/favFood";
-import Greeter from "./components/greeter";
+import FavFood from "./components/FavFood";
+import Greeter from "./components/Greeter";
+import Contact from "./components/Contact";
 // These are imported in order to setup Route handling 
 
 
@@ -26,16 +27,20 @@ function App() {
 
             <div className="flex gap-6 justify-center">
 
-              <div className={btnClass}>
-                <Link to="/">Home</Link>
+              <div>
+                <Link to="/" className={btnClass}>Home</Link>
               </div>
 
-              <div className={btnClass}>
-                <Link to="/favFood">FavFood</Link>
+              <div>
+                <Link to="/favFood" className={btnClass}>FavFood</Link>
               </div>
 
-              <div className={btnClass}>
-                <Link to="/greeter">Greeter</Link>
+              <div>
+                <Link to="/greeter" className={btnClass}>Greeter</Link>
+              </div>
+
+              <div>
+                <Link to="/contact" className={btnClass}>Contacts</Link>
               </div>
 
             </div>
@@ -46,6 +51,7 @@ function App() {
         <Routes>
           <Route path="/favFood" element={<FavFood />} />
           <Route path="/greeter" element={<Greeter />} />
+          <Route path="/contact" element={<Contact />}/>
         </Routes>
 
         <footer className="flex justify-center min-h-16">

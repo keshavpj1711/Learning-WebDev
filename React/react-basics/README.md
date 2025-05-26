@@ -103,6 +103,45 @@ function App() {
   - You can do animations and keep app state.
 
 
+## Imports and Export
+
+- In a single file we can only have a single default export, but that default export can be imported under any name you give it inside another file.
+
+- But if you wanted to get a hold of the other things that are being exported then you can add a comma
+and a set of curly braces and then specify the exact names of the functions or constants or whatever
+it is that you want to export from the other file.
+
+
+## React Props
+
+These are ways of passing data from one react component to another.
+
+For example:
+```jsx
+<ContactCard name="Tom" phone="12353" email="tom@company.com"/>
+```
+
+Now in the ContactCard component we can access these properties passed here
+
+```jsx 
+function ContactCard(props) {
+  return (
+    <div className="flex gap-2">
+      <div>
+        <img src={props.url} alt="" srcset="" className="w-20 h-20"/>
+      </div>
+      <div>
+        <div>Contact Info:{props.phone}</div>
+        <div>Email: {props.email}</div>
+      </div>
+    </div>
+  )
+}
+
+export default ContactCard;
+```
+
+
 ---
 
 

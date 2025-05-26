@@ -1,7 +1,7 @@
 function Greeter() {
   const getHour = new Date().getHours();
   let displayText = "";
-  let color = "";
+  let color;
   function getGreetings(hour) {
     if (hour >= 0 && hour < 12) {
       displayText = "Morning";
