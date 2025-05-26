@@ -1,4 +1,20 @@
 # React
+
+## Inside this module
+
+### React-basics: [Click Here](./react-basics/README.md)
+
+- Server Side and Client Side Routing and Rendering
+  - react-router-dom
+- Setting up a basic react app
+  - Basics of JSX and Babel
+- Basic Str of react app
+  - How things are structured in main.jsxan App.jsx
+- React components and rendering
+  - React props
+  - mapping data to components
+  - conditional rendering
+
 ## **What is React?**
 
 - React is a JavaScript library for building user interfaces (UIs).
