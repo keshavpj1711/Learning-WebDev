@@ -14,7 +14,22 @@
   - React props
   - mapping data to components
   - arrow functions
-  - conditional rendering
+
+### React-rendering: [Click Here](./react-renderingAdv/README.md)
+
+- Conditional Rendering 
+  - with ternary and AND operator
+- State in React
+- React Hooks
+  - useState
+- Object and Array Destructuring
+- Event Handling
+- React forms
+- Complex States
+  - Changing complex states
+- Spread Operator
+- Component Tree
+- React Dependencies
 
 ## **What is React?**
 
