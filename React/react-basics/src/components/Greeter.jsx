@@ -16,7 +16,7 @@ function Greeter() {
   }
 
   return (
-    <div className="grow">
+    <div className="grow flex flex-col justify-between">
       <div>
         <div className="text-2xl flex justify-center">
           Current Hour: {getHour}{getGreetings(getHour)}
@@ -25,6 +25,9 @@ function Greeter() {
         <div className={"text-3xl flex justify-center text-"+ color +"-600"}>
           Good {displayText}!!
         </div>
+      </div>
+      <div className="text-xl flex justify-center">
+        Created to learn about inserting js expression in jsx
       </div>
     </div>
   )

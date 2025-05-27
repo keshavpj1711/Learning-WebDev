@@ -14,6 +14,9 @@ function FavFood() {
         <img src={paneer} alt="" className={imageClass} />
         <img src={biryani} alt="" className={imageClass} />
       </div>
+      <div className="text-xl flex justify-center">
+        Created to Learn about how react components work
+      </div>
     </div>
   )
 }
