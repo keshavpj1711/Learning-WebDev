@@ -13,6 +13,7 @@
 - React components and rendering
   - React props
   - mapping data to components
+  - arrow functions
   - conditional rendering
 
 ## **What is React?**

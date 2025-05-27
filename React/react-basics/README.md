@@ -140,6 +140,46 @@ function ContactCard(props) {
 
 export default ContactCard;
 ```
+> Got to know about React-Dev-Tools, and it's nice it help you have a component tree for your app.
+> It also lets you check which properties are being passed to the components.
+
+
+## Mapping Data to Components
+
+Ok so when we need to loop through loads and loads of data we can't create components for each one of them.
+
+Enters the .`map()` fn, what this does is it loops through all the elements of the array and also passing them as arguments to a function like in the case below.
+
+Example: 
+```jsx
+import ContactCard from "./ContactCard";
+import contactList from "../contacts";
+
+function createCard(contact) {
+  // Since we have to create too many cards we can do this directly 
+  // by calling this fn repetedly using the .map() fn
+  return (
+   <ContactCard 
+   key={contact.id}  
+   // This key parameter even though is present or used in the ContactCard
+   // still it has to be passed in order to avoid error in REACT
+   // It's not something we can tap into it, so if i want to use contact.id we have to set it to something else
+   // id = {contact.id}
+   name={contact.name}
+   phone={contact.phoneNo}
+   email={contact.email}
+   /> 
+  )
+}
+
+function Contact() {
+  return (
+    {contactList.map(createCard)}
+  )
+}
+```
+
+
 
 
 ---
