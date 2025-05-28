@@ -1,6 +1,8 @@
 import './App.css'
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import Auth from './components/auth/Auth';
+import Counter from './components/counter/Counter';
+import GetTime from './components/time/GetTime';
 
 function App() {
 
@@ -14,9 +16,15 @@ function App() {
             Keshav is Learning 2
           </div>
 
-          <div className='flex justify-center'>
+          <div className='flex justify-center gap-4'>
             <Link to={"/auth"} className={btnClass}>
               Auth
+            </Link>
+            <Link to={"/counter"} className={btnClass}>
+              Counter
+            </Link>
+            <Link to={"/getTime"} className={btnClass}>
+              Get Time
             </Link>
           </div>
         </div>
@@ -26,6 +34,8 @@ function App() {
       </div>
       <Routes>
         <Route path="/auth" element={<Auth />} />
+        <Route path="/counter" element={<Counter />} />
+        <Route path="/getTime" element={<GetTime />} />
       </Routes>
     </BrowserRouter>
   )
