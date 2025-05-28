@@ -5,10 +5,10 @@ function GetTime() {
   const [time, setTime] = useState(new Date().toLocaleTimeString())
   const [showingTime, setShowingTime] = useState(false)
 
+  setTimeout(updateTime, 1000);
+
   function updateTime() {
     setTime(new Date().toLocaleTimeString());
-
-    setTimeout(updateTime, 1000);
   }
 
   function showTime() {
@@ -47,6 +47,12 @@ function GetTime() {
                 Show Time
               </button>
             </div>}
+
+          <div className="text-xl flex justify-center mt-8">
+            <p>
+              Implementing useState()
+            </p>
+          </div>
         </div>
       </div>
     </div>
