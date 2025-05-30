@@ -185,3 +185,43 @@ So in order to prevent this reload we have: `event.preventDefault()`
 
 Calling `event.preventDefault()` inside the handlers prevents it from reloading page or the app.
 
+> Have a read about **Controlled and Uncontrolled components, Synthetic events** etc.
+
+
+## Complex States
+
+```jsx
+const [{ fname, lname }, setFullName] = useState({
+  fname: "",
+  lname: "",
+})
+
+function handleChange(e) {
+  const { value, name } = e.target;
+  console.log(value, "\n", name)
+
+  setFullName((prevValue) => {
+    if (name === "fname") {
+      return {
+        fname : value,
+        lname : prevValue.lname
+      }
+    } else {
+      return {
+        fname : prevValue.fname,
+        lname : value
+      }
+    }
+  })
+}
+```
+
+Now i want to point out a few things to keep in mind: 
+
+- See how we can have such complex states so it may not always be a single element it may be an object which can have  info about multiple states.
+  - Complex states are usually used when we want to monitor states but they are a part of something which points to one thing like fname and lname pointing to full name.
+
+- When setting different keys of a state, but we still want to preserve what was there in other keys as well, above is the method of how we do this.
+  - Also keep in mind that we can't directly assign values to `fname` or `lname` using `=` since they are keys of js object and we will have to change their values as we change the value of keys of an object.
+
+> We are returning the value of object since this is what we need to pass to `setFullName()` in order to change the state
