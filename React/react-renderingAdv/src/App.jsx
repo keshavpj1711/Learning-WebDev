@@ -1,8 +1,10 @@
 import './App.css'
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Form, Link, Route, Routes } from "react-router-dom";
 import Auth from './components/auth/Auth';
 import Counter from './components/counter/Counter';
 import GetTime from './components/time/GetTime';
+import Forms from './components/forms/Form';
+
 
 function App() {
 
@@ -26,6 +28,9 @@ function App() {
             <Link to={"/getTime"} className={btnClass}>
               Get Time
             </Link>
+            <Link to={"/form"} className={btnClass}>
+              Forms
+            </Link>
           </div>
         </div>
         <div className='fixed bottom-0 w-full inset-x-0 text-xm flex justify-center p-4'>
@@ -36,6 +41,7 @@ function App() {
         <Route path="/auth" element={<Auth />} />
         <Route path="/counter" element={<Counter />} />
         <Route path="/getTime" element={<GetTime />} />
+        <Route path="/form" element={<Forms />} />
       </Routes>
     </BrowserRouter>
   )

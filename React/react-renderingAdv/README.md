@@ -146,3 +146,23 @@ function Counter() {
 
 > For objects and arrays, **const means the variable will always point to the same object or array in memory**. 
 > However, the contents of that object or array can still be changed (mutated).
+
+## Event Handling 
+
+Example of using `onClick`:
+
+```jsx
+// In a React functional component
+function MyButton() {
+  const handleClick = () => {
+    console.log('Button was clicked!');
+  };
+
+  return (
+    <button onClick={handleClick}>
+      Click Me
+    </button>
+  );
+}
+```
+
