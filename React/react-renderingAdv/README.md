@@ -225,3 +225,28 @@ Now i want to point out a few things to keep in mind:
   - Also keep in mind that we can't directly assign values to `fname` or `lname` using `=` since they are keys of js object and we will have to change their values as we change the value of keys of an object.
 
 > We are returning the value of object since this is what we need to pass to `setFullName()` in order to change the state
+
+
+## Spread Operator
+
+Spread as the name suggests it expands iterable into it's indivisual element.
+
+### For Arrays and String 
+
+```jsx
+const numbers = [1, 2, 3];
+console.log(...numbers); // Output: 1 2 3 (as if you wrote console.log(1, 2, 3))
+
+const greeting = "Hi";
+console.log(...greeting); // Output: H i
+```
+
+### For Objects 
+
+```jsx 
+const user = { name: "Alex", age: 30 };
+// Used when creating a new object:
+const extendedUser = { ...user, city: "New York" };
+// extendedUser is now { name: "Alex", age: 30, city: "New York" }
+```
+
