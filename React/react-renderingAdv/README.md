@@ -166,3 +166,22 @@ function MyButton() {
 }
 ```
 
+## React Forms 
+
+### Default behaviours of HTML forms
+
+When you have a standard HTML `<form>`and a user clicks a submit button (like `<button type="submit">` or an `<input type="submit">`), the browser's default action is to:
+
+- Gather all the data from form fields.
+
+- Send this data as an HTTP request(like a GET or a POST req) to the url specified in the form's `action` attribute OR 
+to the current page if the `action` attribute is not set.
+
+- Reload the entire page to display the server's response
+
+> This reload behaviour may be undesirable in React Apps, since the UI is managed by using different states.
+
+So in order to prevent this reload we have: `event.preventDefault()`
+
+Calling `event.preventDefault()` inside the handlers prevents it from reloading page or the app.
+
